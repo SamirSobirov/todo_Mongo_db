@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
     const data = await users.create(req.body)
 
-    return NextResponse.json({ message: "ok" }, { status: 200 });
+    return NextResponse.json({ message: "user created" }, { status: 201});
   } catch (e) {
     return NextResponse.json({ message: e }, { status: 200 });
   }
