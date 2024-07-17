@@ -8,30 +8,23 @@ export async function GET() {
   try {
     const data = await users.find({});
 
-    
-    return NextResponse.json({message: "ok", data}, {status: 200})
+    return NextResponse.json({ message: "ok", data }, { status: 200 });
   } catch (e) {
-    return NextResponse.json({message: e}, {status: 200})
+    return NextResponse.json({ message: e }, { status: 200 });
   }
-
 }
 
-export async function PATCH(req: NextRequest) {
-    await dbConnect()
+export async function POST(req: NextRequest) {
+  await dbConnect();
 
-    try {
-        const id = req.nextUrl.searchParams.get('id')
-        const body = await req.json()
+  try {
 
-        const updated = await tasks.findByIdAndUpdate(id, { ...body});
+    const data = await users.create(req.body)
 
-
-        return NextResponse.json({message: 'Todo updated'}, {status: 200})
-
-    } catch (e) {
-        
-        return NextResponse.json({message: e}, {status: 200})
-    }
+    return NextResponse.json({ message: "ok" }, { status: 200 });
+  } catch (e) {
+    return NextResponse.json({ message: e }, { status: 200 });
+  }
 }
 // export default async function handlers(req: NextRequest, res: NextResponse) {
 
