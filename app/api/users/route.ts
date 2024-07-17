@@ -3,7 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 export default async function handlers(req: NextRequest, res: NextResponse) {
     
-    req.method
+    const {method} = req 
 
+
+    switch (method) {
+        case 'GET':
+            return NextResponse.json({message: "ok", date: {name: 'Alex'}}, {status: 200})
+    
+        default:
+            break;
+    }
 
 }
