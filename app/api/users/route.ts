@@ -15,6 +15,24 @@ export async function GET() {
   }
 
 }
+
+export async function PATCH(req: NextRequest) {
+    await dbConnect()
+
+    try {
+        const id = req.nextUrl.searchParams.get('id')
+        const body = await req.json()
+
+        const updated = await tasks.findByIdAndUpdate(id, { ...body});
+
+
+        return NextResponse.json({message: 'Todo updated'}, {status: 200})
+
+    } catch (e) {
+        
+        return NextResponse.json({message: e}, {status: 200})
+    }
+}
 // export default async function handlers(req: NextRequest, res: NextResponse) {
 
 //     const {method} = req
