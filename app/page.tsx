@@ -12,7 +12,8 @@ export default function Home() {
     fetch('http://localhost:3000/api/users',{
       method: "POST",
       body: JSON.stringify(user)
-    }).then(res => console.log(res))
+    }).then(res => res.json())
+  .then(res => console.log(res))
   }
 
   return (

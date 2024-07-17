@@ -23,19 +23,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: "user created" }, { status: 201});
   } catch (e) {
-    return NextResponse.json({ message: e }, { status: 200 });
+    return NextResponse.json({ message: req.body }, { status: 200 });
   }
 }
-// export default async function handlers(req: NextRequest, res: NextResponse) {
-
-//     const {method} = req
-
-//     switch (method) {
-//         case 'GET':
-//             return NextResponse.json({message: "ok", date: {name: 'Alex'}}, {status: 200})
-
-//         default:
-//             break;
-//     }
-
-// }
