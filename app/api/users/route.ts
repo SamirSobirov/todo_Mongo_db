@@ -6,7 +6,7 @@ export async function GET() {
   await dbConnect();
 
   try {
-    const date = await users.find({});
+    const data = await users.find({});
 
     
     return NextResponse.json({message: "ok", data}, {status: 200})
