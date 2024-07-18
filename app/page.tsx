@@ -1,5 +1,7 @@
 "use client"
+import axios from "axios";
 import Image from "next/image";
+import { use } from "react";
 
 export default function Home() {
   function postData() {
@@ -9,12 +11,15 @@ export default function Home() {
       email: 'alex@gmail.com'
     }
 
-    fetch('http://localhost:3000/api/users',{
-      method: "POST",
-      body: JSON.stringify(user)
-    }).then(res => res.json())
-  .then(res => console.log(res))
-  }
+    axios.post('http://localhost:3000/api/users', user)
+    .then(res => console.log(res))
+
+  //   fetch('http://localhost:3000/api/users',{
+  //     method: "POST",
+  //     body: JSON.stringify(user)
+  //   }).then(res => res.json())
+  // .then(res => console.log(res))
+  // }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
