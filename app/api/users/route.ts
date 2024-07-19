@@ -17,9 +17,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   await dbConnect();
   try {
-
       const user = await req.json()
-
       const data = await users.create(user) 
 
       return NextResponse.json({message: "user created", data}, {status: 201})
